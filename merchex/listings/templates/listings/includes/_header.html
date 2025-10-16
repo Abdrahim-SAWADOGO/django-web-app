@@ -1,0 +1,26 @@
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="{% url 'home' %}">MonSite</a>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'band' %}">Bands</a></li>
+            <li><a href="{% url 'about' %}">Listings</a></li>
+            
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                <li><a href="#">Déconnexion</a></li>
+            {% else %}
+                <li><a href="#">Connexion</a></li>
+            {% endif %}
+        </ul>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>

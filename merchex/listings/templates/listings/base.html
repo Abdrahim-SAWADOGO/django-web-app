@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Site Django{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'listings/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'listings/images/favicon.ico' %}">
+</head>
+<body>
+    <!-- Header -->
+    {% include 'listings/includes/_header.html' %}
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}
+        <!-- Le contenu spécifique à chaque page viendra ici -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'listings/includes/_footer.html' %}
+
+    <!-- JavaScript -->
+    <script src="{% static 'listings/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "listings/base.html" %}
+{% block title %}Listings{% endblock title %}
+{% block content %}
+    <h2>Mes groupes préférés sont :</h2>
+    <ul>
+        {% for band in bands %}
+            <li>{{ band.name|upper }}</li>
+        {% endfor %}
+    </ul>
+    <p>J'ai {{ bands|length }} groupes préférés.</p>
+    <p>
+        Donc J'ai 
+        {% if bands|length < 5 %}
+            peu de
+        {% elif bands|length < 10 %}
+            quelques
+        {% else %}
+            beaucoup de
+        {% endif %}
+            groupes préférés.
+    </p>
+{% endblock %}
